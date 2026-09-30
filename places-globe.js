@@ -7,9 +7,9 @@
   const tip = document.getElementById("globe-tip");
 
   const CONTINENTS = {
-    "North America": { color: "#E9A23B", href: "places/north-america.html" },
+    "North America": { color: "#8C74E0", href: "places/north-america.html" },
     "South America": { color: "#5BAE62", href: null },
-    "Europe":        { color: "#8C74E0", href: "places/europe.html" },
+    "Europe":        { color: "#6AD6F0", href: "places/europe.html" },
     "Africa":        { color: "#E0664F", href: "places/africa.html" },
     "Asia":          { color: "#F2CF4B", href: "places/asia.html" },
     "Oceania":       { color: "#E071A8", href: null },
@@ -35,7 +35,6 @@
   const projection = d3.geoOrthographic().clipAngle(90).precision(0.3);
   const path = d3.geoPath(projection, ctx);
   const graticule = d3.geoGraticule10();
-  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   function size() {
     const dpr = Math.min(window.devicePixelRatio || 1, 2);
@@ -46,7 +45,7 @@
     projection.translate([W / 2, W / 2]).scale(R);
   }
 
-  let rot = [10, -18], target = [10, -18], data = null, hover = null;
+  let rot = [10, -18], data = null, hover = null;
   // European Russia (west of the Urals) is painted as Europe on top of the Asian colour
   const euroRussia = { type: "Polygon", coordinates: [[[27, 41], [27, 82], [60, 82], [60, 41], [27, 41]]] };
   const frenchGuiana = { type: "Polygon", coordinates: [[[-55, 1.5], [-55, 6.5], [-50.5, 6.5], [-50.5, 1.5], [-55, 1.5]]] };
@@ -87,24 +86,12 @@
     ctx.beginPath(); path({ type: "Sphere" }); ctx.strokeStyle = "rgba(255,255,255,.55)"; ctx.lineWidth = 1.2; ctx.stroke();
   }
 
-  let running = false;
-  function tick() {
-    const k = reduceMotion ? 1 : 0.08;
-    rot = [rot[0] + (target[0] - rot[0]) * k, rot[1] + (target[1] - rot[1]) * k];
-    draw();
-    if (Math.abs(target[0] - rot[0]) > 0.05 || Math.abs(target[1] - rot[1]) > 0.05) requestAnimationFrame(tick);
-    else running = false;
-  }
-  function kick() { if (!running) { running = true; requestAnimationFrame(tick); } }
+  function redraw() { draw(); }
 
-  // pointer left of centre turns the globe left, right turns it right; up/down tilts a little
-  let base = 10, dragging = false, lastX = 0;
-  wrap.addEventListener("pointermove", (e) => {
+  // Click and drag to turn the globe. It moves only while you drag and stops the moment you let go.
+  let dragging = false, moved = 0, startX = 0, startY = 0, startRot = rot;
+  function hit(e) {
     const b = canvas.getBoundingClientRect();
-    const nx = (e.clientX - b.left) / b.width - 0.5, ny = (e.clientY - b.top) / b.height - 0.5;
-    if (e.pointerType === "mouse") target = [base + nx * 220, -18 - ny * 40];
-    else if (dragging) { base += (e.clientX - lastX) * 0.5; lastX = e.clientX; target = [base, target[1]]; }
-    // which continent is under the pointer
     const ll = projection.invert([e.clientX - b.left, e.clientY - b.top]);
     let found = null;
     if (ll && data && d3.geoDistance(ll, [-rot[0], -rot[1]]) < Math.PI / 2) {
@@ -112,17 +99,40 @@
       if (found === "Asia" && data.russia && d3.geoContains(data.russia, ll) && ll[0] < 60) found = "Europe";
       if (found === "Europe" && ll[0] < -30) found = "South America";
     }
-    if (found !== hover) { hover = found; canvas.style.cursor = found && CONTINENTS[found].href ? "pointer" : "grab"; }
+    return { found, x: e.clientX - b.left, y: e.clientY - b.top };
+  }
+  canvas.addEventListener("pointerdown", (e) => {
+    dragging = true; moved = 0; startX = e.clientX; startY = e.clientY; startRot = rot.slice();
+    canvas.setPointerCapture(e.pointerId); canvas.style.cursor = "grabbing";
+    if (tip) tip.hidden = true;
+  });
+  canvas.addEventListener("pointermove", (e) => {
+    if (dragging) {
+      const dx = e.clientX - startX, dy = e.clientY - startY;
+      moved = Math.max(moved, Math.hypot(dx, dy));
+      const k = 180 / (Math.PI * R);            // one globe-radius of drag = ~57 degrees
+      rot = [startRot[0] + dx * k, Math.max(-60, Math.min(60, startRot[1] - dy * k))];
+      hover = null; redraw(); return;
+    }
+    const h = hit(e);
+    if (h.found !== hover) { hover = h.found; redraw(); }
+    canvas.style.cursor = h.found && CONTINENTS[h.found].href ? "pointer" : "grab";
     if (tip) {
-      if (found) { tip.hidden = false; tip.textContent = found; tip.style.left = (e.clientX - b.left) + "px"; tip.style.top = (e.clientY - b.top) + "px"; }
+      if (h.found) { tip.hidden = false; tip.textContent = h.found; tip.style.left = h.x + "px"; tip.style.top = h.y + "px"; }
       else tip.hidden = true;
     }
-    kick();
   });
-  wrap.addEventListener("pointerleave", () => { base = rot[0]; hover = null; if (tip) tip.hidden = true; kick(); });
-  wrap.addEventListener("pointerdown", (e) => { dragging = true; lastX = e.clientX; });
-  window.addEventListener("pointerup", () => { dragging = false; });
-  canvas.addEventListener("click", () => { if (hover && CONTINENTS[hover].href) window.location.href = CONTINENTS[hover].href; });
+  function endDrag(e) {
+    if (!dragging) return;
+    dragging = false; canvas.style.cursor = "grab";
+    if (moved < 4) {                              // a click, not a drag
+      const h = hit(e);
+      if (h.found && CONTINENTS[h.found].href) window.location.href = CONTINENTS[h.found].href;
+    }
+  }
+  canvas.addEventListener("pointerup", endDrag);
+  canvas.addEventListener("pointercancel", () => { dragging = false; canvas.style.cursor = "grab"; });
+  canvas.addEventListener("pointerleave", () => { if (!dragging) { hover = null; if (tip) tip.hidden = true; redraw(); } });
 
   function build(world) {
     const obj = world.objects.countries;
