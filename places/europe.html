@@ -93,6 +93,12 @@
     .article .body p { margin: 0 0 18px; font-size: 17px; line-height: 1.8; max-width: 64ch; }
     .hero-img { display: block; width: 100%; height: auto; border-radius: var(--radius); }
     .banner { aspect-ratio: 16 / 7; border-radius: var(--radius); background-image: var(--tile); background-size: cover; background-position: center 40%; }
+    .visited { display: grid; gap: 14px; }
+    .visited h2 { font-size: 22px; }
+    .visited ul { list-style: none; margin: 0; padding: 0; columns: 2; column-gap: 32px; max-width: 520px; }
+    .visited li { position: relative; padding-left: 22px; font-size: 17px; margin-bottom: 10px; break-inside: avoid; }
+    .visited li::before { content: ""; position: absolute; left: 2px; top: .62em; width: 9px; height: 9px; border-radius: 50%; background: #2FB4D4; }
+    @media (max-width: 480px) { .visited ul { columns: 1; } }
     .draft { background: var(--surface); border: 1px solid var(--line); border-left: 3px solid var(--accent); border-radius: var(--radius); padding: 16px 20px; font-size: 15px; color: var(--muted); }
   </style>
 </head>
@@ -113,6 +119,20 @@
       <span class="cat">Travel</span>
       <h1>Europe</h1>
       <div class="banner" style="--tile:linear-gradient(160deg,rgba(155,231,247,.55) 0%,rgba(79,195,227,.62) 50%,rgba(29,126,158,.72) 100%), url(../images/places/europe-wide.jpg)" aria-hidden="true"></div>
+      <section class="visited">
+        <h2>Countries I've visited</h2>
+        <ul>
+          <li>Belgium</li>
+          <li>France</li>
+          <li>Germany</li>
+          <li>Greece</li>
+          <li>Italy</li>
+          <li>The Netherlands</li>
+          <li>Spain</li>
+          <li>Türkiye</li>
+          <li>United Kingdom</li>
+        </ul>
+      </section>
       <div class="body">
         <p class="draft">Photos and stories from Europe are on the way. Check back soon.</p>
       </div>
