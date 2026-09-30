@@ -86,6 +86,13 @@
     .places { border-top: 1px solid var(--line); padding-block: 72px 96px; display: grid; gap: 40px; justify-items: center; }
     .places h2 { font-family: var(--body); font-weight: 400; font-size: clamp(26px, 3.4vw, 38px); letter-spacing: .06em; text-transform: uppercase; text-align: center; }
     .places .rule { width: 180px; height: 2px; background: var(--accent); margin-top: -18px; }
+    .globe-wrap { position: relative; width: min(520px, 100%); aspect-ratio: 1 / 1; touch-action: pan-y; }
+    .globe-wrap canvas { display: block; width: 100%; height: 100%; cursor: grab; }
+    .globe-tip { position: absolute; transform: translate(12px, -130%); background: rgba(31, 42, 32, .88); color: #fff; font-size: 13px; padding: 4px 10px; border-radius: 999px; pointer-events: none; white-space: nowrap; }
+    .globe-legend { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 18px; font-size: 13px; color: var(--muted); margin-top: -12px; }
+    .globe-legend span { display: inline-flex; align-items: center; gap: 6px; }
+    .globe-legend i { width: 11px; height: 11px; border-radius: 50%; display: inline-block; }
+    .globe-hint { font-size: 13px; color: #859085; margin-top: -24px; }
     .place-grid { width: 100%; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
     .place { position: relative; aspect-ratio: 1 / 1; overflow: hidden; display: flex; align-items: center; justify-content: center; text-align: center; padding: 16px; background: var(--tile) center / cover no-repeat; border-radius: 2px; }
     .place::before { content: ""; position: absolute; inset: 0; background: rgba(20, 28, 22, .22); transition: background .25s; }
@@ -182,12 +189,15 @@
     <section id="places" class="places">
       <h2>Where I've Been So Far</h2>
       <div class="rule" aria-hidden="true"></div>
+      <div class="globe-wrap"><canvas id="globe" role="img" aria-label="Interactive globe with the seven continents in different colors"></canvas><div class="globe-tip" id="globe-tip" hidden></div></div>
+      <p class="globe-hint">Move your pointer across the globe to turn it. Click a continent to read more.</p>
+      <div class="globe-legend" aria-hidden="true"><span><i style="background:#E9A23B"></i>North America</span><span><i style="background:#5BAE62"></i>South America</span><span><i style="background:#8C74E0"></i>Europe</span><span><i style="background:#E0664F"></i>Africa</span><span><i style="background:#F2CF4B"></i>Asia</span><span><i style="background:#E071A8"></i>Oceania</span><span><i style="background:#CFE3F1"></i>Antarctica</span></div>
       <div class="place-grid">
         <a class="place" href="places/europe.html" style="--tile:linear-gradient(160deg,#7f9cc4 0%,#b9a58a 55%,#8a6f55 100%)"><span>Europe</span></a>
         <a class="place" href="places/asia.html" style="--tile:linear-gradient(160deg,#c98a9a 0%,#9e86b8 50%,#4f5d86 100%)"><span>Asia</span></a>
         <a class="place" href="places/central-america.html" style="--tile:linear-gradient(160deg,#6fb3b8 0%,#4f9a73 55%,#2f5f45 100%)"><span>Central America</span></a>
-        <a class="place" href="places/beaches.html" style="--tile:linear-gradient(180deg,#8fc3e6 0%,#4d8fc4 55%,#1f5f99 100%)"><span>Beach Getaways</span></a>
-        <a class="place" href="places/cities.html" style="--tile:linear-gradient(160deg,#b4a0c8 0%,#8a86a8 50%,#4d4f66 100%)"><span>City Breaks</span></a>
+        <a class="place" href="places/north-america.html" style="--tile:linear-gradient(160deg,#e9b36b 0%,#c98a4b 50%,#7a5230 100%)"><span>North America</span></a>
+        <a class="place" href="places/africa.html" style="--tile:linear-gradient(160deg,#e8a07a 0%,#c4663f 55%,#6e3a24 100%)"><span>Africa</span></a>
         <a class="place" href="places/off-the-beaten-path.html" style="--tile:linear-gradient(180deg,#5b8fd1 0%,#3f7a5c 60%,#2c4f37 100%)"><span>Off the Beaten Path</span></a>
       </div>
     </section>
@@ -199,5 +209,8 @@
       <div>Written between flights.</div>
     </div>
   </footer>
+  <script src="https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/topojson-client@3.1.0/dist/topojson-client.min.js"></script>
+  <script src="places-globe.js"></script>
 </body>
 </html>
