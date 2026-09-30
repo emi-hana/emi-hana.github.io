@@ -7,11 +7,11 @@
   const tip = document.getElementById("globe-tip");
 
   const CONTINENTS = {
-    "North America": { color: "#8C74E0", href: "places/north-america.html" },
-    "South America": { color: "#5BAE62", href: "places/south-america.html" },
-    "Europe":        { color: "#6AD6F0", href: "places/europe.html" },
-    "Africa":        { color: "#E0664F", href: "places/africa.html" },
-    "Asia":          { color: "#F2CF4B", href: "places/asia.html" },
+    "North America": { color: "#6D5DAB", href: "places/north-america.html" },
+    "South America": { color: "#49884E", href: "places/south-america.html" },
+    "Europe":        { color: "#4098AE", href: "places/europe.html" },
+    "Africa":        { color: "#AB5340", href: "places/africa.html" },
+    "Asia":          { color: "#B29432", href: "places/asia.html" },
     "Oceania":       { color: "#E071A8", href: null },
     "Antarctica":    { color: "#CFE3F1", href: null },
   };
