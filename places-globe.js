@@ -8,7 +8,7 @@
 
   const CONTINENTS = {
     "North America": { color: "#8C74E0", href: "places/north-america.html" },
-    "South America": { color: "#5BAE62", href: null },
+    "South America": { color: "#5BAE62", href: "places/south-america.html" },
     "Europe":        { color: "#6AD6F0", href: "places/europe.html" },
     "Africa":        { color: "#E0664F", href: "places/africa.html" },
     "Asia":          { color: "#F2CF4B", href: "places/asia.html" },
