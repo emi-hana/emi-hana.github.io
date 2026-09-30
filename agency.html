@@ -3,9 +3,9 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>The Wandering Mind</title>
+  <title>What is Agency -- in the Era of Agentic AI · The Wandering Mind</title>
   <link rel="icon" href="favicon-pine.svg" type="image/svg+xml">
-  <meta name="description" content="Dispatches on travel, psychology, culture, and economics.">
+  <meta name="description" content="If a program can plan my week and answer my email, what part of the deciding is still mine?">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet">
@@ -83,56 +83,39 @@
       .hero { padding-block: 56px 40px; }
       .links { gap: 18px; }
     }
+
+    .article { max-width: 720px; padding-block: 72px 96px; display: grid; gap: 20px; }
+    .back { font-size: 14px; color: var(--muted); }
+    .back:hover { color: var(--accent); }
+    .article h1 { font-size: clamp(32px, 5vw, 46px); line-height: 1.15; letter-spacing: -0.3px; }
+    .subtitle { margin: 0; font-family: var(--display); font-style: italic; font-size: 20px; line-height: 1.5; color: var(--muted); }
+    .byline { font-size: 13px; color: #859085; letter-spacing: .04em; border-bottom: 1px solid var(--line); padding-bottom: 24px; }
+    .article .body p { margin: 0 0 18px; font-size: 17px; line-height: 1.8; max-width: 64ch; }
+    .draft { background: var(--surface); border: 1px solid var(--line); border-left: 3px solid var(--accent); border-radius: var(--radius); padding: 16px 20px; font-size: 15px; color: var(--muted); }
   </style>
 </head>
 <body>
   <header>
     <div class="wrap nav">
-      <a href="#" class="logo"><img src="images/ef-pine.svg" alt="" width="35" height="36">The Wandering Mind</a>
+      <a href="index.html" class="logo"><img src="images/ef-pine.svg" alt="" width="35" height="36">The Wandering Mind</a>
       <nav class="links">
-        <a href="#posts">Notes</a>
-        <a href="#about">About</a>
+        <a href="index.html#posts">Notes</a>
+        <a href="index.html#about">About</a>
       </nav>
     </div>
   </header>
 
   <main class="wrap">
-    <section class="hero">
-      <span class="eyebrow">A travel &amp; ideas journal</span>
-      <h1>Touring the mental and physical realms!</h1>
-      <p>Dispatches on travel, psychology, culture, and economics, four fields that keep circling the same question: why people do what they do, and where.</p>
-    </section>
-
-    <section id="posts" class="posts">
-      <a href="agency.html" class="post feature">
-        <div class="art" aria-hidden="true"></div>
-        <div class="inner">
-          <span class="cat">Travel · Psychology</span>
-          <h3>What is Agency -- in the Era of Agentic AI</h3>
-          <p>If a program can plan my week and answer my email, what part of the deciding is still mine?</p>
-          <span class="more">Read more →</span>
-        </div>
-      </a>
-
-      <a href="StreetFoodEconomics.dc.html" class="post">
-        <span class="cat">Travel · Economics</span>
-        <h3>What Street Food Prices Tell You About a City</h3>
-        <p>A plate of noodles is a cleaner economic indicator than most spreadsheets. Reading rent, wages, and inflation off a menu board.</p>
-        <span class="more">Read more →</span>
-      </a>
-
-      <a href="CultureShockBias.dc.html" class="post">
-        <span class="cat">Psychology · Culture</span>
-        <h3>Culture Shock Is a Cognitive Bias, Not a Feeling</h3>
-        <p>What predictive processing says about why new places feel exhausting, and why the "stages" of culture shock are really just a brain updating its priors.</p>
-        <span class="more">Read more →</span>
-      </a>
-    </section>
-
-    <section id="about" class="about">
-      <h2>About these notes</h2>
-      <p>I'm Emily, a psychology student who spends a suspicious amount of time thinking about airports. This is where I write about the places minds and places overlap: how jet lag rewires attention, why a bowl of street food is secretly an economics lesson, and why culture shock feels less like an emotion and more like a glitch in the brain's prediction engine.</p>
-    </section>
+    <article class="article">
+      <a class="back" href="index.html#posts">← All notes</a>
+      <span class="cat">Psychology · Technology</span>
+      <h1>What is Agency -- in the Era of Agentic AI</h1>
+      <p class="subtitle">If a program can plan my week and answer my email, what part of the deciding is still mine?</p>
+      <div class="byline">By Emily Fang</div>
+      <div class="body">
+        <p class="draft">I'm still writing this one. Check back soon for the full piece.</p>
+      </div>
+    </article>
   </main>
 
   <footer>
