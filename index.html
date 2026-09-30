@@ -69,7 +69,10 @@
     .post p { margin: 0; font-size: 15px; color: var(--muted); }
     .more { margin-top: auto; font-size: 14px; font-weight: 700; color: var(--accent); }
 
-    .about { border-top: 1px solid var(--line); padding-block: 64px; max-width: 760px; display: grid; gap: 16px; }
+    .about { border-top: 1px solid var(--line); padding-block: 64px; max-width: 900px; display: grid; grid-template-columns: 240px 1fr; gap: 40px; align-items: start; }
+    .about .portrait { width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; border-radius: var(--radius); display: block; }
+    .about .text { display: grid; gap: 16px; min-width: 0; }
+    @media (max-width: 700px) { .about { grid-template-columns: 1fr; gap: 24px; } .about .portrait { max-width: 260px; } }
     .about h2 { font-size: 26px; }
     .about p { margin: 0; font-size: 16px; line-height: 1.75; color: var(--muted); }
 
@@ -130,10 +133,13 @@
     </section>
 
     <section id="about" class="about">
-      <h2>About these notes</h2>
-      <p>I'm Emily, a fourth-year Psychology student at UCLA. I'm interested in cognition, behavior, mental health, and how psychological research can help with complex human problems.</p>
-      <p>So far I've traveled to 20 countries, mostly in Central America, Asia, and Europe, and I'm not done yet. This blog is where I write about the places I go and the questions they leave me with.</p>
-      <p>I also paint, mostly portraits. You can see my work at <a href="https://emilyfang.me"><strong>emilyfang.me</strong></a>. Follow along with my journey!</p>
+      <img class="portrait" src="images/emily.jpg" alt="Emily Fang in Paris, smiling, wearing a black leather jacket and a striped top" width="1000" height="1250" loading="lazy">
+      <div class="text">
+        <h2>About these notes</h2>
+        <p>I'm Emily, a fourth-year Psychology student at UCLA. I'm interested in cognition, behavior, mental health, and how psychological research can help with complex human problems.</p>
+        <p>So far I've traveled to 20 countries, mostly in Central America, Asia, and Europe, and I'm not done yet. This blog is where I write about the places I go and the questions they leave me with.</p>
+        <p>I also paint, mostly portraits. You can see my work at <a href="https://emilyfang.me"><strong>emilyfang.me</strong></a>. Follow along with my journey!</p>
+      </div>
     </section>
   </main>
 
