@@ -4,6 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>The Wandering Mind</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <meta name="description" content="Dispatches on travel, psychology, culture, and economics.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -32,7 +33,8 @@
 
     header { border-bottom: 1px solid var(--line); }
     .nav { display: flex; justify-content: space-between; align-items: center; height: 76px; }
-    .logo { font-family: var(--display); font-weight: 700; font-size: 21px; color: var(--text); }
+    .logo { font-family: var(--display); font-weight: 700; font-size: 21px; color: var(--text); display: flex; align-items: center; gap: 12px; }
+    .logo img { height: 36px; width: auto; display: block; }
     .links { display: flex; gap: 28px; font-size: 14px; }
     .links a { color: var(--muted); }
     .links a:first-child { color: var(--accent); }
@@ -86,7 +88,7 @@
 <body>
   <header>
     <div class="wrap nav">
-      <a href="#" class="logo">The Wandering Mind</a>
+      <a href="#" class="logo"><img src="images/ef-logo-green.svg" alt="" width="23" height="36">The Wandering Mind</a>
       <nav class="links">
         <a href="#posts">Notes</a>
         <a href="#about">About</a>
