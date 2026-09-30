@@ -92,7 +92,7 @@
     .byline { font-size: 13px; color: #859085; letter-spacing: .04em; border-bottom: 1px solid var(--line); padding-bottom: 24px; }
     .article .body p { margin: 0 0 18px; font-size: 17px; line-height: 1.8; max-width: 64ch; }
     .hero-img { display: block; width: 100%; height: auto; border-radius: var(--radius); }
-    .banner { aspect-ratio: 16 / 7; border-radius: var(--radius); background: var(--tile); }
+    .banner { aspect-ratio: 16 / 7; border-radius: var(--radius); background-image: var(--tile); background-size: cover; background-position: center 40%; }
     .draft { background: var(--surface); border: 1px solid var(--line); border-left: 3px solid var(--accent); border-radius: var(--radius); padding: 16px 20px; font-size: 15px; color: var(--muted); }
   </style>
 </head>
@@ -112,7 +112,7 @@
       <a class="back" href="../index.html#places">← Where I've been</a>
       <span class="cat">Travel</span>
       <h1>Europe</h1>
-      <div class="banner" style="--tile:linear-gradient(160deg,#9BE7F7 0%,#4FC3E3 50%,#1D7E9E 100%)" aria-hidden="true"></div>
+      <div class="banner" style="--tile:linear-gradient(160deg,rgba(155,231,247,.55) 0%,rgba(79,195,227,.62) 50%,rgba(29,126,158,.72) 100%), url(../images/places/europe-wide.jpg)" aria-hidden="true"></div>
       <div class="body">
         <p class="draft">Photos and stories from Europe are on the way. Check back soon.</p>
       </div>

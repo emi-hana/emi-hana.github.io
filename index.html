@@ -94,7 +94,7 @@
     .globe-legend i { width: 11px; height: 11px; border-radius: 50%; display: inline-block; }
     .globe-hint { font-size: 13px; color: #859085; margin-top: -24px; }
     .place-grid { width: 100%; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
-    .place { position: relative; aspect-ratio: 1 / 1; overflow: hidden; display: flex; align-items: center; justify-content: center; text-align: center; padding: 16px; background: var(--tile) center / cover no-repeat; border-radius: 2px; }
+    .place { position: relative; aspect-ratio: 1 / 1; overflow: hidden; display: flex; align-items: center; justify-content: center; text-align: center; padding: 16px; background-image: var(--tile); background-size: cover; background-position: center; background-repeat: no-repeat; border-radius: 2px; }
     .place::before { content: ""; position: absolute; inset: 0; background: rgba(20, 28, 22, .26); transition: background .25s; }
     .place:hover::before { background: rgba(20, 28, 22, .38); }
     .place span { position: relative; color: #FFFFFF; font-family: var(--body); font-size: clamp(20px, 2.4vw, 30px); letter-spacing: .05em; text-transform: uppercase; line-height: 1.15; text-shadow: 0 1px 12px rgba(0,0,0,.35); }
@@ -193,7 +193,7 @@
       <p class="globe-hint">Click and drag the globe to turn it. Click a continent to read more.</p>
       <div class="globe-legend" aria-hidden="true"><span><i style="background:#6D5DAB"></i>North America</span><span><i style="background:#49884E"></i>South America</span><span><i style="background:#4098AE"></i>Europe</span><span><i style="background:#AB5340"></i>Africa</span><span><i style="background:#B29432"></i>Asia</span><span><i style="background:#E071A8"></i>Oceania</span><span><i style="background:#CFE3F1"></i>Antarctica</span></div>
       <div class="place-grid">
-        <a class="place" href="places/europe.html" style="--tile:linear-gradient(160deg,#9BE7F7 0%,#4FC3E3 50%,#1D7E9E 100%)"><span>Europe</span></a>
+        <a class="place" href="places/europe.html" style="--tile:linear-gradient(160deg,rgba(155,231,247,.55) 0%,rgba(79,195,227,.62) 50%,rgba(29,126,158,.72) 100%), url(images/places/europe.jpg)"><span>Europe</span></a>
         <a class="place" href="places/asia.html" style="--tile:linear-gradient(160deg,#F7E189 0%,#E9BE3C 50%,#9C7414 100%)"><span>Asia</span></a>
         <a class="place" href="places/south-america.html" style="--tile:linear-gradient(160deg,#A8D8A6 0%,#5BAE62 50%,#2A6532 100%)"><span>South America</span></a>
         <a class="place" href="places/north-america.html" style="--tile:linear-gradient(160deg,#B3A2F0 0%,#8C74E0 50%,#4B3896 100%)"><span>North America</span></a>
