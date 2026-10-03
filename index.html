@@ -46,7 +46,7 @@
     .hero p { margin: 0; font-size: 19px; color: var(--muted); max-width: 60ch; }
 
     .posts {
-      display: grid; grid-template-columns: 1.6fr 1fr; grid-template-rows: auto auto;
+      display: grid; grid-template-columns: 1.6fr 1fr; grid-template-rows: auto auto auto;
       gap: 28px; padding-bottom: 96px;
     }
     .post {
@@ -55,7 +55,7 @@
       padding: 28px; color: var(--text); transition: border-color .2s;
     }
     .post:hover { border-color: var(--accent); color: var(--text); }
-    .post.feature { grid-row: span 2; padding: 0; overflow: hidden; }
+    .post.feature { grid-row: span 3; padding: 0; overflow: hidden; }
     .post.feature .art {
       aspect-ratio: 16 / 9; background:
         radial-gradient(circle at 25% 35%, rgba(255,255,255,.55) 0 18%, transparent 19%),
@@ -189,6 +189,12 @@
         <span class="cat">Psychology · Culture</span>
         <h3>Culture Shock Is a Cognitive Bias, Not a Feeling</h3>
         <p>What predictive processing says about why new places feel exhausting, and why the "stages" of culture shock are really just a brain updating its priors.</p>
+        <span class="more">Read more →</span>
+      </a>
+      <a href="fashion-identity.html" class="post">
+        <span class="cat">Psychology · Culture</span>
+        <h3>Fashion and Identity-Building</h3>
+        <p>The transience of clothing, both in one’s closet and on one’s mind, was fascinating to me, as they had physically projected their mental states upon cloth draped or tied onto themselves.</p>
         <span class="more">Read more →</span>
       </a>
     </section>

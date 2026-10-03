@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Fashion and Identity-Building · The Wandering Mind</title>
+  <link rel="icon" href="favicon-pine.svg" type="image/svg+xml">
+  <meta name="description" content="On fashion girls, Beauty and the Geek, and the identities we put on.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* Design 40 · Sage Notebook · Magazine · Baskerville / Nunito */
+    :root {
+      --bg: #FFFFFF;
+      --surface: #FFFFFF;
+      --text: #1F2A20;
+      --muted: #5F6B5F;
+      --line: #DDE3D8;
+      --accent: #4E7A55;
+      --accent-dark: #3A5E40;
+      --tint: #CADBC8;
+      --radius: 6px;
+      --display: "Libre Baskerville", Georgia, serif;
+      --body: "Nunito Sans", system-ui, -apple-system, sans-serif;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--bg); color: var(--text); font-family: var(--body); font-size: 16px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { color: var(--accent-dark); }
+    h1, h2, h3 { font-family: var(--display); margin: 0; font-weight: 400; text-wrap: balance; }
+    .wrap { max-width: 1180px; margin: 0 auto; padding-inline: 32px; }
+
+    header { border-bottom: 1px solid var(--line); }
+    .nav { display: flex; justify-content: space-between; align-items: center; height: 76px; }
+    .logo { font-family: var(--display); font-weight: 700; font-size: 21px; color: var(--text); display: flex; align-items: center; gap: 12px; }
+    .logo img { height: 36px; width: auto; display: block; }
+    .links { display: flex; gap: 28px; font-size: 14px; }
+    .links a { color: var(--muted); }
+    .links a:first-child { color: var(--accent); }
+    .links a:hover { color: var(--accent-dark); }
+
+    .hero { padding-block: 88px 56px; max-width: 760px; display: grid; gap: 18px; }
+    .eyebrow { font-size: 12px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--accent); }
+    .hero h1 { font-size: clamp(38px, 6vw, 58px); line-height: 1.1; letter-spacing: -0.5px; }
+    .hero p { margin: 0; font-size: 19px; color: var(--muted); max-width: 60ch; }
+
+    .posts {
+      display: grid; grid-template-columns: 1.6fr 1fr; grid-template-rows: auto auto;
+      gap: 28px; padding-bottom: 96px;
+    }
+    .post {
+      display: flex; flex-direction: column; gap: 12px;
+      background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
+      padding: 28px; color: var(--text); transition: border-color .2s;
+    }
+    .post:hover { border-color: var(--accent); color: var(--text); }
+    .post.feature { grid-row: span 2; padding: 0; overflow: hidden; }
+    .post.feature .art {
+      aspect-ratio: 16 / 9; background:
+        radial-gradient(circle at 25% 35%, rgba(255,255,255,.55) 0 18%, transparent 19%),
+        linear-gradient(135deg, var(--tint), #A9C4A6 60%, var(--accent));
+    }
+    .post.feature .inner { padding: 32px; display: flex; flex-direction: column; gap: 14px; flex: 1; }
+    .post.feature h3 { font-size: 30px; line-height: 1.2; }
+    .post.feature p { font-size: 17px; }
+    .cat { font-size: 12px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--accent); }
+    .post h3 { font-size: 21px; line-height: 1.3; }
+    .post p { margin: 0; font-size: 15px; color: var(--muted); }
+    .more { margin-top: auto; font-size: 14px; font-weight: 700; color: var(--accent); }
+
+    .about { border-top: 1px solid var(--line); padding-block: 64px; max-width: 760px; display: grid; gap: 16px; }
+    .about h2 { font-size: 26px; }
+    .about p { margin: 0; font-size: 16px; line-height: 1.75; color: var(--muted); }
+
+    footer { border-top: 1px solid var(--line); }
+    footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; padding-block: 28px; font-size: 13px; color: #859085; }
+
+    @media (max-width: 820px) {
+      .wrap { padding-inline: 20px; }
+      .posts { grid-template-columns: 1fr; }
+      .post.feature { grid-row: auto; }
+      .hero { padding-block: 56px 40px; }
+      .links { gap: 18px; }
+    }
+
+    .article { max-width: 720px; padding-block: 72px 96px; display: grid; gap: 20px; }
+    .back { font-size: 14px; color: var(--muted); }
+    .back:hover { color: var(--accent); }
+    .article h1 { font-size: clamp(32px, 5vw, 46px); line-height: 1.15; letter-spacing: -0.3px; }
+    .subtitle { margin: 0; font-family: var(--display); font-style: italic; font-size: 20px; line-height: 1.5; color: var(--muted); }
+    .byline { font-size: 13px; color: #859085; letter-spacing: .04em; border-bottom: 1px solid var(--line); padding-bottom: 24px; }
+    .article .body p { margin: 0 0 18px; font-size: 17px; line-height: 1.8; max-width: 64ch; }
+    .hero-img { display: block; width: 100%; height: auto; border-radius: var(--radius); }
+    .draft { background: var(--surface); border: 1px solid var(--line); border-left: 3px solid var(--accent); border-radius: var(--radius); padding: 16px 20px; font-size: 15px; color: var(--muted); }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap nav">
+      <a href="index.html" class="logo"><img src="images/ef-pine.svg" alt="" width="35" height="36">The Wandering Mind</a>
+      <nav class="links">
+        <a href="index.html#posts">Essays</a>
+        <a href="index.html#about">About</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <article class="article">
+      <a class="back" href="index.html#posts">← All essays</a>
+      <span class="cat">Psychology · Culture</span>
+      <h1>Fashion and Identity-Building</h1>
+      <div class="byline">By Emily Fang · 512 words · 2 min read</div>
+      <div class="body">
+        <p>Recently, I was introduced to the world of “fashion girls.” Fashion is defined as a way of dressing, behaving, writing, or performing that is favored at one time and/or place. To be considered “fashionable,” one is conforming to the custom, style, or established mode of that time and/or place.</p>
+        <p>I enjoy watching the YouTuber Cody Ko, and he reviewed the unique 2000s show called “Beauty and the Geek.” It’s actually a great show; you should check it out. On the show in Season 1, they paired 7 male “geeks” with 7 female “beauties” to help one another become more well-rounded. The men had to study many topics that were not their forte, including giving massages, having dates, getting phone numbers, and learning the names of pop songs and magazines. The women were tested on other unfamiliar topics: rocket science, math, modern politics, camping, and car maintenance. While these contrasting battles were a bit gender-stereotyped, I actually resonated with the topics that the men claimed to have mastered a bit more. And in watching the show, I discovered how much some women invest in being highly feminine. Here, we’ll define feminine as qualities commonly attributed to women by the given larger society.</p>
+        <p>When I looked further into the phenomenon of fashion girls, it opened up a whole new world for me. I had no idea that there are hundreds of different subcategories of styles, as caused by the fast fashion industry. These subcategories are supposed to help one in cultivating one’s identity, much like how many confused teenagers tried on multiple genders for a year in high school during the pandemic.</p>
+        <p>The transience of clothing, both in one’s closet and on one’s mind, was fascinating to me, as they had physically projected their mental states upon cloth draped or tied onto themselves.</p>
+        <p>As it turns out, there is a name for this phenomenon: “enclothed cognition.” It is defined as the influence that clothes have on the wearer’s psychological processes. In a 2012 study, participants who wore a white coat described as a doctor’s coat performed better on attention tasks than those who were told it was a painter’s coat. Perhaps the fashion girls were onto something after all.</p>
+        <p>This physical manifestation of emotion, self, and identity seemed to have been deeply analyzed and pondered upon by these women. I would estimate some fashion girls spend over 10–20 hours a week thinking about fashion. I also noticed that many pieces/dresses were well over $250–300, before shipping. And the shops were mostly online, so you needed to know your size and hope for the best about the quality of the cloth.</p>
+        <p>In the end, I decided that I was not a fashion girl, as the ROI was just too imbalanced for me. But learning about this world had opened up a new one for me.</p>
+        <p>To tie back to the TV show, “Beauty and the Geek,” I do see the great value in counterbalancing your own quirks with something foreign every once in a while, but it does not need to be a daily practice.</p>
+      </div>
+    </article>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <div>© 2026 The Wandering Mind</div>
+      <div><a href="https://www.instagram.com/emilyfang.me/" target="_blank" rel="noopener">Instagram · @emilyfang.me</a></div>
+      <div>Written between flights.</div>
+    </div>
+  </footer>
+</body>
+</html>
