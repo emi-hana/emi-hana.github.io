@@ -61,6 +61,7 @@
         radial-gradient(circle at 25% 35%, rgba(255,255,255,.55) 0 18%, transparent 19%),
         linear-gradient(135deg, var(--tint), #A9C4A6 60%, var(--accent));
     }
+    .post .thumb { display: block; width: calc(100% + 56px); margin: -28px -28px 4px; height: 190px; object-fit: cover; object-position: center 12%; border-radius: var(--radius) var(--radius) 0 0; }
     img.art { display: block; width: 100%; height: auto; object-fit: cover; }
     .post.feature .inner { padding: 32px; display: flex; flex-direction: column; gap: 14px; flex: 1; }
     .post.feature h3 { font-size: 30px; line-height: 1.2; }
@@ -192,6 +193,7 @@
         <span class="more">Read more →</span>
       </a>
       <a href="fashion-identity.html" class="post">
+        <img class="thumb" src="images/fashion-street.jpg" alt="" loading="lazy">
         <span class="cat">Psychology · Culture</span>
         <h3>Fashion and Identity-Building</h3>
         <p>The transience of clothing, both in one’s closet and on one’s mind, was fascinating to me, as they had physically projected their mental states upon cloth draped or tied onto themselves.</p>
